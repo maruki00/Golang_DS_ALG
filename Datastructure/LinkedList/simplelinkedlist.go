@@ -9,7 +9,7 @@ var (
 	container *SimpleLinkedList = nil
 )
 
-func (obj *SimpleLinkedList) add(value int) {
+func add(value int) {
 	tmp := *&SimpleLinkedList{
 		value: value,
 		next:  nil,
@@ -30,6 +30,49 @@ func (obj *SimpleLinkedList) add(value int) {
 }
 
 func list() {
-	tmpContainer = container
+	tmpContainer := container
+	for {
+		if tmpContainer == nil {
+			break
+		}
+		println("value : ", tmpContainer.value)
+		tmpContainer = tmpContainer.next
+	}
+}
 
+func delete(value int) {
+	tmpContainer := container
+	for {
+		if tmpContainer == nil {
+			break
+		}
+		if tmpContainer.value == value {
+			for {
+				println("---")
+				if tmpContainer == nil {
+
+					break
+				}
+				tmpContainer = tmpContainer.next
+			}
+		}
+		// if tmpContainer.next !=nil{
+		// 	if tmpContainer
+		// }
+	}
+}
+
+func main() {
+	add(1)
+	add(2)
+	add(3)
+	add(4)
+	list()
+	add(3)
+	add(4)
+	list()
+	add(1)
+	add(2)
+	delete(1)
+	list()
 }
