@@ -43,26 +43,6 @@ func (tree *Tree) Insert(value int) {
 	}
 }
 
-// func (tree *Tree) Insert(m int) {
-// 	if tree != nil {
-// 		if tree.LeftNode == nil {
-// 			tree.LeftNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
-// 		} else {
-// 			if tree.RightNode == nil {
-// 				tree.RightNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
-// 			} else {
-// 				if tree.LeftNode != nil {
-// 					tree.LeftNode.Insert(m)
-// 				} else {
-// 					tree.RightNode.Insert(m)
-// 				}
-// 			}
-// 		}
-// 	} else {
-// 		tree = &Tree{LeftNode: nil, value: m, RightNode: nil}
-// 	}
-// }
-
 func (tree *Tree) Print(msg string) {
 	if tree == nil {
 		return
