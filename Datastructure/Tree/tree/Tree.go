@@ -1,5 +1,7 @@
 package tree
 
+import "fmt"
+
 //	type TreeNode struct {
 //		value     int
 //		LeftNode  *Tree
@@ -77,12 +79,25 @@ func (tree *Tree) Insert(m int) {
 	}
 }
 
-func (tree *Tree) Print(msg string) {
-	if tree == nil {
-		return
-	}
-	println(msg, " - Value : ", tree.value)
-	tree.LeftNode.Print("Left")
-	tree.RightNode.Print("Right")
+// func (tree *Tree) Print(msg string) {
+// 	if tree == nil {
+// 		return
+// 	}
+// 	println(msg, " - Value : ", tree.value)
+// 	tree.LeftNode.Print("Left")
+// 	tree.RightNode.Print("Right")
 
+// }
+
+func print(tree *Tree) {
+	if tree != nil {
+
+		fmt.Println(" Value", tree.value)
+		fmt.Printf("Tree Node Left")
+		print(tree.LeftNode)
+		fmt.Printf("Tree Node Right")
+		print(tree.RightNode)
+	} else {
+		fmt.Printf("Nil\n")
+	}
 }
