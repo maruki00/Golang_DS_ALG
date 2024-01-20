@@ -1,7 +1,5 @@
 package tree
 
-import "fmt"
-
 //	type TreeNode struct {
 //		value     int
 //		LeftNode  *Tree
@@ -15,89 +13,62 @@ type Tree struct {
 
 func (tree *Tree) Init(value int) {
 	tree = &Tree{
-		LeftNode:  nil,
+
 		value:     value,
+		LeftNode:  nil,
 		RightNode: nil,
 	}
 }
 
-// func (tree *Tree) Insert(value int) {
-
-// 	if tree == nil {
-// 		tree = &Tree{
-// 			value:     value,
-// 			LeftNode:  nil,
-// 			RightNode: nil,
-// 		}
-// 		return
-// 	}
-// 	if tree.LeftNode == nil {
-// 		tree.LeftNode = &Tree{
-// 			value:     value,
-// 			LeftNode:  nil,
-// 			RightNode: nil,
-// 		}
-// 		return
-// 	}
-// 	if tree.RightNode == nil {
-// 		tree.RightNode = &Tree{
-// 			value:     value,
-// 			LeftNode:  nil,
-// 			RightNode: nil,
-// 		}
-// 		return
-// 	}
-// 	tree.LeftNode.Insert(value)
-// 	tree.RightNode.Insert(value)
-
-// }
-
-func (tree *Tree) Insert(m int) {
-	if tree != nil {
-
-		if tree.LeftNode == nil {
-			tree.LeftNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
-		} else {
-			if tree.RightNode == nil {
-				tree.RightNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
-			} else {
-
-				if tree.LeftNode != nil {
-
-					tree.LeftNode.Insert(m)
-				} else {
-
-					tree.RightNode.Insert(m)
-				}
-
-			}
-
-		}
-
+func (tree *Tree) Insert(value int) {
+	node := &Tree{value, nil, nil}
+	if tree == nil {
+		tree = node
+		return
+	}
+	if tree.LeftNode == nil {
+		tree.LeftNode = node
+		return
+	}
+	if tree.RightNode == nil {
+		tree.RightNode = node
+		return
+	}
+	if tree.LeftNode != nil {
+		tree.LeftNode.Insert(value)
+		return
 	} else {
-		tree = &Tree{LeftNode: nil, value: m, RightNode: nil}
+		tree.RightNode.Insert(value)
+		return
 	}
 }
 
-// func (tree *Tree) Print(msg string) {
-// 	if tree == nil {
-// 		return
+// func (tree *Tree) Insert(m int) {
+// 	if tree != nil {
+// 		if tree.LeftNode == nil {
+// 			tree.LeftNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
+// 		} else {
+// 			if tree.RightNode == nil {
+// 				tree.RightNode = &Tree{LeftNode: nil, value: m, RightNode: nil}
+// 			} else {
+// 				if tree.LeftNode != nil {
+// 					tree.LeftNode.Insert(m)
+// 				} else {
+// 					tree.RightNode.Insert(m)
+// 				}
+// 			}
+// 		}
+// 	} else {
+// 		tree = &Tree{LeftNode: nil, value: m, RightNode: nil}
 // 	}
-// 	println(msg, " - Value : ", tree.value)
-// 	tree.LeftNode.Print("Left")
-// 	tree.RightNode.Print("Right")
-
 // }
 
-func print(tree *Tree) {
-	if tree != nil {
-
-		fmt.Println(" Value", tree.value)
-		fmt.Printf("Tree Node Left")
-		print(tree.LeftNode)
-		fmt.Printf("Tree Node Right")
-		print(tree.RightNode)
-	} else {
-		fmt.Printf("Nil\n")
+func (tree *Tree) Print(msg string) {
+	if tree == nil {
+		return
 	}
+	println(msg, " - Value : ", tree.value)
+	tree.LeftNode.Print(msg + "-> Left")
+	tree.RightNode.Print(msg + "-> Right")
+
 }
